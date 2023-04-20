@@ -1,5 +1,4 @@
 const express = require('express');
-const route1 = require('./common');
 const problem1 = require('../logger/logger.js');
 const problem2 = require('../util/helper.js');
 const problem3 = require('../validator/formater.js');
@@ -11,20 +10,15 @@ const month = ['January','February','March','April','May','June','July','August'
 const arr = [1,3,5,7,9,11,13,15,17,19]
 
 router.get('/test-me', function (req, res) {
-    problem1.welcome()
+    // problem1.welcome()
     
-    problem2.printDate()
-    problem2.printMonth()
-    problem2.printBatchInfo()
+    // problem2.printDate()
+    // problem2.printMonth()
+    // problem2.printBatchInfo()
 
-    problem3.upperCase()
-    problem3.lowerCase()
-    problem3.trim()
-
-    // console.log(firstSubArray)
-    // console.log(secondSubArray)
-    // console.log(thirdSubArray)
-    // console.log(fourthSubArray)
+    // problem3.upperCase()
+    // problem3.lowerCase()
+    // problem3.trim()
    
     console.log(lodash.chunk(month , 3))
     console.log(lodash.tail(arr))
