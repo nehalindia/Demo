@@ -2,6 +2,8 @@ const express = require('express');
 const { route } = require('express/lib/application');
 const router = express.Router();
 
+
+//movies problem from W5D4
 const array = ['Rang de basanti', 'The shining', 'Lord of the rings', 'Batman begins']
 router.get('/movies',function(req, res){
     console.log(array)
@@ -36,6 +38,8 @@ router.get('/films/:filmid',function(req, res){
     }
 })
 
+
+// missing array value using get W6D1
 router.get('/sol1',function(req, res){
     let arr = [1,2,3,4,5,6,7,8,9,11]
     let sum = arr.reduce((x,y) => x+y)
@@ -52,6 +56,8 @@ router.get('/sol2',function(req, res){
     console.log('missingvalue :'+missingvalue)
 });
 
+
+// players problem using post W6D1
 let players =
    [
        {
@@ -80,7 +86,7 @@ let players =
            "sports": [
                "soccer"
            ]
-       },
+       }
    ]
 
    router.post('/players', function(req,res){
@@ -90,14 +96,55 @@ let players =
             flag = 1
         }
     }
+    let pla = req.body
     if(flag == 0){
-        players.push(req.body)
+        players.push(pla)
         res.send({data : players, status : true})
     }
     else{
         res.send({Response : "Data Already Exist"})
     }
    })
+
+
+  // voter age problem using post W6D2
+   let persons= [
+    {
+    name: "PK",
+    age: 10,
+    votingStatus: false
+ },
+ {
+    name: "SK",
+    age: 20,
+    votingStatus: false
+ },
+ {
+    name: "AA",
+    age: 70,
+    votingStatus: false
+ },
+ {
+    name: "SC",
+    age: 5,
+    votingStatus: false
+ },
+ {
+    name: "HO",
+    age: 40,
+    votingStatus: false
+ }
+ ]
+router.post('/voters',function(req,res){
+    let arr = []
+    for(let i=0; i<persons.length; i++){
+        if(persons[i].age >= req.query.votingAge){
+            persons[i].votingStatus = true
+            arr.push(persons[i])
+        }
+    }
+    res.send(arr)
+}) 
 
 module.exports = router;
 
